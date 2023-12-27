@@ -1,0 +1,70 @@
+:root{
+    --text-color : #303438;
+
+    --btn-nomal: #FFC000;
+    --btn-hover: #FCE798;
+    --btn-submit: #F9950F;
+
+    --btn-disable: #D5D6D7;
+}
+
+.tx-black{
+    color: var(--text-color);
+}
+.tx-gray{
+    color: #D5D6D7;
+}
+.tx-white{
+    color: white;
+}
+.tx-lightorg{
+    color: #FCE798;
+}
+.tx-orange{
+    color: #F9950F;
+}
+
+.f-size-14px{
+    font-size: .875rem;
+}
+
+.cancle-btn {
+    background-color: white;
+}
+
+.magin-t-5{
+    margin-top: 5rem;
+}
+.magin-t-1{
+    margin-top: 1rem;
+}
+.magin-t-05{
+    margin-top: 0.5rem;
+}
+.magin-r-1{
+    margin-right: 1rem;
+}
+
+.magin-b-5{
+    margin-bottom: 5rem;
+}
+
+.bg-orange{
+    background-color: #F9950F;
+}
+
+.divide-line{
+    border: 0px;
+    width: 100%;
+    border-top:  1px dashed var(--btn-nomal);
+}
+
+.gray-line{
+    border: 0px;
+    width: 70%;
+    border-top:  1px solid rgb(180, 180, 180);
+}
+
+.f-w-600{
+    font-weight: 600;
+}

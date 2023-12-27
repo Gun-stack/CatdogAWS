@@ -1,0 +1,372 @@
+/** 회원가입/ 로그인/ 비밀번호찾기/ 아이디 찾기 창 css */
+
+input::placeholder {
+    font-family: 'Pretendard-Regular';
+    font-size: .9rem;
+    color: #b9b9b9;
+    vertical-align: bottom;
+}
+
+.label-text{
+    font-family: 'Pretendard-Regular';
+    font-size: .8rem;
+    padding-left: .7rem;
+    color: #ffc06e;
+}
+
+.radio-text {
+    font-family: 'Pretendard-Regular';
+    font-size: .8rem;
+    color: #b9b9b9;
+
+}
+
+.input-for-label{
+    display: flex;
+    flex-direction: column;
+}
+
+.filebox {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filebox>label {
+    padding: .5rem;
+    height: 1rem;
+    font-size: 1rem;
+    margin: .5rem 0;
+    color: #ffffff;
+    background-color: var(--btn-submit);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filebox>label:hover {
+    background-color: var(--btn-nomal);
+    transition: background-color .3s ease-in-out;
+}
+
+.input-box-style {
+    width: 80%;
+    border: none;
+}
+
+.input-d-img {
+    width: 80%;
+}
+
+input[type=file] {
+    display: none;
+}
+
+[type=text],
+[type=password],
+textarea {
+    font-family: 'Pretendard-Regular';
+    font-size: 1rem;
+    color: var(--text-color);
+    background: none;
+}
+
+
+[type=text]:focus {
+    border-bottom: 1px solid var(--btn-submit);
+    transition: border-bottom .3s ease-in-out;
+}
+
+[type=password]:focus {
+    border-bottom: 1px solid var(--btn-submit);
+    transition: border-bottom .3s ease-in-out;
+}
+
+[type=button] {
+    border: none;
+    outline: none;
+}
+
+[type="radio"],
+.radio-center {
+    vertical-align: middle;
+}
+
+
+[type="radio"] {
+    appearance: none;
+    border: max(2px, 0.1em) solid rgb(255, 179, 128);
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.2s ease-in-out;
+}
+
+[type="radio"]:checked {
+    border: 0.4em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+
+[type="date"] {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+[type="number"] {
+    border: none;
+    background-color: #ffffff00;
+}
+
+.input-img {
+    width: 70%;
+}
+
+.address-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.address-btn-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.address-btn {
+    padding: 0.5rem 0;
+    width: 6rem;
+    height: 2rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: var(--btn-submit);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 0.8rem;
+}
+
+.address-btn:hover{
+    background-color: var(--btn-nomal);
+    transition: background-color .3s ease-in-out;
+}
+
+.input-container {
+    width: 90%;
+    background-color: white;
+    border-radius: 5px;
+    padding: .5rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
+}
+
+.radio-container {
+    width: 25rem;
+    height: 2.5rem;
+
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    align-items: center;
+
+    padding: .5rem;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    margin: .5rem;
+}
+
+.radio-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.input-text {
+    width: 25rem;
+    height: 2.5rem;
+    padding: .5rem;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 5px;
+    margin: .5rem;
+}
+
+.login-tools {
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.duplication-check {
+    position: relative;
+}
+
+.duplication-btn {
+    position: absolute;
+    top: 25.5%;
+    right: 5%;
+}
+
+.logintool-text {
+    font-weight: 600;
+    margin: .3rem;
+}
+
+.form-section {
+    height: 100%;
+    width: inherit;
+}
+
+.form-css {
+    width: inherit;
+}
+
+.form-container {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.boader-none {
+    border: none;
+    outline: none;
+}
+
+.style-area {
+    border: none;
+    outline: none;
+    width: 15rem;
+    font-family: 'Pretendard-Regular';
+    background-color: #e2e2e2;
+}
+
+.form-text {
+    font-weight: 600;
+}
+
+.date-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.react-modal-css {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdraw-img {
+    width: 100px;
+}
+
+.withdraw-text {
+    font-family: 'Pretendard-Regular';
+    font-weight: 600;
+    margin: 1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.main-nav-list-text.active {
+    font-weight: 600;
+    color: var(--btn-submit);
+}
+
+.react-datalist-input__textbox {
+    width: 25rem;
+    font-size: 1rem;
+    font-family: 'pretendard-regular';
+    line-height: 1.25rem;
+    margin: 0rem;
+    color: #303438;
+    background: none;
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid rgb(100, 100, 100); */
+}
+
+
+.react-datalist-input__listbox {
+    height: 20rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 25rem;
+    position: absolute;
+    margin: 2px 0 0 0;
+    padding: 0;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    box-shadow: var(--shadow);
+    z-index: 10;
+}
+
+.react-datalist-input__container {
+    width: 25rem;
+    position: relative;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --gray: rgb(200, 200, 200);
+    --padding: 5px;
+    --border-radius: 5px;
+    --border: 1px solid var(--gray);
+}
+
+.react-datalist-input__listbox-option {
+    width: 25rem;
+    cursor: pointer;
+    margin: 0;
+    padding: var(--padding);
+}
+
+.react-datalist-input__listbox-option:focus {
+    background-color: var(--gray);
+}
+
+.react-datalist-input__listbox-option:hover {
+    background-color: var(--gray);
+}
+
+.deshome-input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.deshome-input-text{
+    margin: .5rem;
+}
+
+.deshome-input-btn-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.st-profile-container{
+    display: flex;
+}
+
+.search-txt{
+    width: 10rem;
+    height: 1.1rem;
+}
+.search-btn{
+    background-color: white;    
+}

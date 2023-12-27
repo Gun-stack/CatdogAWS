@@ -1,0 +1,46 @@
+.web-container{
+    min-height: 100vh;
+
+    /* background-color: rgb(248, 248, 248); */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pretendard-Regular';
+    background-image: url('../../img/background/pc-bg2.png');
+    background-position: 20%;
+    background-attachment: fixed;
+}
+
+.cd-container{
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Pretendard-Regular';
+}
+
+.cd-main{
+    width: inherit;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.bg-dogs{
+    background-image: url('../../img/background/bg_mypage.png');
+    background-position: 50% 85%;
+}
+
+.reservation-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation-container>input{
+    cursor: default;
+}

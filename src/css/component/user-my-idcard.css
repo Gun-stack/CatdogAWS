@@ -1,0 +1,139 @@
+.usermy-id-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.id-cards {
+    padding: 2rem 1rem;
+    width: 90%;
+    height: 10rem;
+    position: relative;
+    transition: all .4s;
+    transform-style: preserve-3d;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-logo {
+    width: 300px;
+}
+
+.id-card-front,
+.id-card-back,
+.id-des-card-back,
+.id-shop-card-back {
+    position: absolute;
+    top: 0;
+
+    padding: 2rem 1rem;
+    width: 90%;
+    height: 10rem;
+
+    border-radius: 10px;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+}
+
+.id-card-back {
+    background: #ffb347;
+    background: -webkit-linear-gradient(to right, #ffcc33, #ffb347);
+    background: linear-gradient(to right, #ffcc33, #ffb347);
+    transform: rotateX(180deg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.id-des-card-back {
+    background: #CC95C0;
+    background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+    background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+    transform: rotateX(180deg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-shop-card-back {
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
+    transform: rotateX(180deg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-card-front {
+    background-image: url('../../img/background/bg_idcard.png');
+    background-size: 95%;
+    background-position: center;
+}
+
+.id-front-display {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.usermy-id-card .id-cards.flipped {
+    transform: rotateX(180deg);
+}
+
+.id-card-title {
+    font-family: 'Binggrae';
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.id-text {
+    line-height: 1.5rem;
+    margin: 0 1rem;
+}
+
+.wi-30 {
+    width: 30rem;
+}
+
+.id-card-img {
+    width: 150px;
+    margin: 0 1rem;
+}
+
+.id-card-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-modi-container {
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+}
+
+.btn-display {
+    display: flex;
+    justify-content: space-center;
+}
+
+.btn-inner-text {
+    text-align: left;
+    width: 10rem;
+    color: #ffffff;
+}

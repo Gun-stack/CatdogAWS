@@ -1,0 +1,69 @@
+/* 화면  550px 이하일때 */
+@media (max-width: 550px) {
+    .header-btn{
+        background-color: var(--btn-nomal);
+        padding: 3px 2.5px;
+        margin: 0 4px;
+        border-radius: .6rem;
+    }    
+    .header-btn-text{
+        color:  #fff;
+        font-size: .7rem;
+    }
+    .cd-container{
+        width: 100%;
+        }
+    
+    .login-tools{
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-tools>div{
+        width: 70vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    .input-text{
+        width: 80vw;
+    }
+    .radio-container{
+        width: 80vw;
+    }
+
+    .address-input{
+        width: 70vw;
+    }
+
+    .wi-30{
+        width: 70vw;
+    }
+    
+    .main-nav-list{
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .gray-line{
+        width: 90%;
+    }
+    .main-nav-list-text>a{
+        margin: 0 .2rem;
+    }
+
+    .gal-text{
+        width: 65vw;
+    }
+
+    .st-gallery-grid {
+        grid-auto-rows: 150px;
+    }
+    .search-txt{
+        width: 10rem;
+        height: 1.1rem;
+    }
+    .input-container{
+        width: 90vw;
+    }
+}
