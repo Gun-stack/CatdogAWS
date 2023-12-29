@@ -52,8 +52,7 @@ function DesResvDetail(props) {
     const CompleteImg = () => {
         console.log(resv);
         Swal.fire({
-            title: '스타일 사진 업로드',
-            text: '스타일 사진을 업로드해주세요',
+            title: '<span class="sweet-modal-title">스타일 사진을 업로드해주세요</span>',
             input: 'file',
             inputPlaceholder: '스타일 사진을 업로드해주세요',
             showCancelButton: true,
@@ -65,7 +64,7 @@ function DesResvDetail(props) {
                 console.log(result1.value);
                const formData = new FormData();
                Swal.fire({
-                   title: '스타일에 관한 설명',
+                    title: '<span class="sweet-modal-title">스타일을 설명해 주세요</span>',
                    input: 'text',
                    inputPlaceholder: '스타일을 설명해 주세요',
                    showCancelButton: true,
@@ -81,9 +80,27 @@ function DesResvDetail(props) {
                                 axios.post(`${url}/makereservation`,resv)
                                 .then((res)=>{
                                     formData.append('text',result2.value);
+                                    if(result1.value === null){
+                                        formData.append('file',null);
+                                    }else{
                                     formData.append('file',result1.value);
+                                    }
                                     formData.append('num',res.data.num);
-                                    axios.post(`${url}/addresvfile`,formData);
+                                    
+                                    axios.post(`${url}/addresvfile`,formData)
+                                    .then((res)=>{
+                                        console.log(res);
+                                    }
+                                    )
+                                    .catch((err)=>{
+                                        console.log(err);
+                                    }
+                                    )
+                                }
+                                )
+                                .catch((err)=>{
+                                    console.log(err);
+
                                 })
                                 SwalCustomAlert(
                                     'success',

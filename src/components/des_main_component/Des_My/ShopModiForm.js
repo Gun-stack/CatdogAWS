@@ -316,6 +316,7 @@ function ShopModiForm() {
                                     <div className="filebox">
                                         <img src={`${url}/shopimg/${selectShop.profImg}`} accept="image/*" alt='샵 기본이미지'
                                             className="input-img" placeholder='사진을 올려주세요' ref={imgBoxRef} />
+                                            
                                         <label htmlFor="shopImgFile">샵 사진 올리기</label>
                                         <input type="file" id="shopImgFile" accept="image/*" onChange={fileChange} />
                                     </div>

@@ -12,15 +12,10 @@ import { url } from '../../../config';
 
 function PetModi() {
     const navigate = useNavigate();
-    //가져온 펫넘버
     const params = useParams();
-    // 펫정보 추가
-    const petList = useSelector((state) => state.petList);
-    const pet = petList.find((pet) => pet.num == params.num);
-
     const imgBoxRef = useRef();
     const user = useSelector((state) => state.user);
-
+    const [pet, setPet] = useState({})
     const [files, setFiles] = useState([]);
     const [newPet, setNewPet] = useState({
         num: '',
@@ -32,6 +27,7 @@ function PetModi() {
         gender: pet.gender,
         neuter: pet.neuter,
     });
+
 
     const change = (e) => {
         const name = e.target.name;
@@ -51,13 +47,11 @@ function PetModi() {
         }
         const imageSrc = URL.createObjectURL(e.target.files[0]);
         imgBoxRef.current.src = imageSrc;
-
     };
+
     const token = useSelector(state => state.token);
+
     useEffect(() => {
-
-
-        // console.log("로그인 후 토큰 값 : " + token);
         axios.get(`${url}/user`, {
             headers: {
                 Authorization: token,
@@ -67,7 +61,6 @@ function PetModi() {
                 console.log("Res : " + res.data);
             })
             .catch(err => {
-                // console.log("Err : " + err);
                 SwalCustomAlert(
                     'warning',
                     "로그인 이후 사용 가능합니다."
@@ -75,25 +68,31 @@ function PetModi() {
                 navigate('/userlogin');
             })
 
-
-        // console.log(params.num);
-        setNewPet({
-            num: pet.num,
-            name: pet.name,
-            dogOrCat: pet.dogOrCat,
-            age: pet.age,
-            weight: pet.weight,
-            breed: pet.breed,
-            neuter: pet.neuter,
-            gender: pet.gender,
-        });
+            axios.get(`${url}/petinfobynum?num=${params.num}`)
+            .then((res) => {
+                setPet(res.data);
+                console.log(res.data);
+                setNewPet({
+                    num: res.data.num,
+                    name: res.data.name,
+                    dogOrCat: res.data.dogOrCat,
+                    age: res.data.age,
+                    weight: res.data.weight,
+                    breed: res.data.breed,
+                    neuter: res.data.neuter,
+                    gender: res.data.gender,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            
 
     }, []);
 
 
     const onSubmit = e => {
         e.preventDefault();
-
         if (newPet.num === '') {
             newPet.num = pet.num;
         }
@@ -177,19 +176,20 @@ function PetModi() {
                 <span className="main-logo-text">반려동물 등록하기</span>
             </section>
 
+                {newPet &&
             <section className="form-section">
                 <div className="form-container">
                     <div className="input-container">
-
+                
                         <div className="filebox">
-
+                            {pet.img &&
                             <img src={`${url}/petimg/${pet.num}`} accept="image/*" alt=''
-                                className="input-box-style" placeholder='사진을 올려주세요' ref={imgBoxRef} />
-
+                            className="input-box-style" placeholder='사진을 올려주세요' ref={imgBoxRef} />
+                            }
                             <label htmlFor="petImgFile">반려동물 사진 수정하기</label>
                             <input type="file" id="petImgFile" accept="image/*" onChange={fileChange} />
-
                         </div>
+
                         <div className='input-for-label'>
                             <label htmlFor="name" className="label-text">반려동물 이름</label>
                             <input type="text" id="name" name="name" placeholder="반려동물 이름"
@@ -229,9 +229,7 @@ function PetModi() {
                                 <span> <input type="radio" id="gender" name="gender" value={true} onChange={change} defaultChecked={newPet.gender === true} />남아</span>
                                 <span> <input type="radio" id="gender" name="gender" value={false} onChange={change} defaultChecked={newPet.gender === false} />여아</span>
                             </div>
-
                         </div>
-
 
                         {/* 중성화여부 */}
                         <div className="radio-container">
@@ -241,7 +239,6 @@ function PetModi() {
                                 <span> <input type="radio" id="neuter" name="neuter" value={false} onChange={change} defaultChecked={newPet.neuter === false} />아니요</span>
                             </div>
                         </div>
-
                     </div>
 
                     <div className="button-container">
@@ -252,11 +249,11 @@ function PetModi() {
                         <div className="main-btn  magin-t-1 btn-gray">
                             <div onClick={goBack} className="btn-text">취소</div>
                         </div>
-
                     </div>
 
                 </div>
             </section>
+            }
         </main>
     );
 }

@@ -129,6 +129,7 @@ function DesGal() {
                     ))}
             </div>
 
+            </PullToRefresh>
             {hasMore ? (
                 <div className="main-btn main-sm-btn" onClick={PlusPage}>
                     <span className="btn-text">더보기</span>
@@ -138,7 +139,6 @@ function DesGal() {
                     <span className="btn-text">마지막 페이지 입니다.</span>
                 </div>
             )}
-            </PullToRefresh>
         </section>
     );
 }

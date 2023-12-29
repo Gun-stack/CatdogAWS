@@ -24,7 +24,6 @@ function Distance() {
     const token = useSelector(state => state.token);
     const navigate = useNavigate();
     useEffect(() => {
-        
         // console.log("로그인 후 토큰 값 : " + token);
         axios.get(`${url}/user`, {
             headers: {
@@ -57,24 +56,6 @@ function Distance() {
     }, [dispatch]);
 
 
-
-    // useEffect(() => {
-    //     axios.get(`${url}/shoplistall`)
-    //         .then((res) => {
-    //             const fetchedShops = res.data;
-    //             const sortedByDistance = fetchedShops.map(shop => {
-    //                 const distance = calculateDistance(coord.latitude, coord.longitude, shop.lat, shop.lon,);
-    //                 return { ...shop, distance };
-    //             }).sort((a, b) => a.distance - b.distance);
-
-    //             dispatch({ type: 'SET_SHOP_LIST', payload: sortedByDistance });
-    //             setSortedShops(sortedByDistance);
-    //             // console.log(sortedShops);
-    //         })
-    // }, [dispatch]);
-
-
-
     return (
         <ul className="shop-list-ul">
             {shops.map((shoplist) => (
@@ -83,7 +64,13 @@ function Distance() {
                     <div className="nearby-shop-container">
                         <div className="nearby-shop-address-container">
                             <div className="nearby-shop-img-container">
-                                <Link to={"/shop/" + shoplist.num}><img className="nearby-shop-img" name="image" alt='' src={`${url}/shopimg/${shoplist.profImg}`}></img></Link>
+                                <Link to={"/shop/" + shoplist.num}>
+                                        {shoplist.profImg === null ?
+                                            <img className="nearby-shop-img" name="image" alt='' src='/img/gallrey-img/3.jpg'></img>
+                                        : <img className="nearby-shop-img" name="image" alt='' src={`${url}/shopimg/${shoplist.profImg}`}></img>
+                                    }
+                                    
+                                    </Link>
                             </div>
 
                             {/* // 제목을 누르면 지도에서 마커 찍어주기?? */}

@@ -35,7 +35,12 @@ function Popular() {
                     <div className="nearby-shop-container">
                         <div className="nearby-shop-address-container">
                             <div className="nearby-shop-img-container">
-                                <Link to={"/shop/" + shop.num}><img className="nearby-shop-img" name="image" alt='' src={`${url}/shopimg/${shop.profImg}`}></img></Link>
+                                <Link to={"/shop/" + shop.num}> 
+                                    {shop.profImg === null ?
+                                            <img className="nearby-shop-img" name="image" alt='' src='/img/gallrey-img/3.jpg'></img>
+                                        : <img className="nearby-shop-img" name="image" alt='' src={`${url}/shopimg/${shop.profImg}`}></img>
+                                    }
+                                </Link>
                             </div>
 
                             {/* // 제목을 누르면 지도에서 마커 찍어주기?? */}

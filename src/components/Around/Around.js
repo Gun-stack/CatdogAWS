@@ -129,12 +129,12 @@ function Around() {
                         errMsg: err.message,
                         isLoading: false,
                     }));
-                    Swal.fire(
-                        "오류", "위치 정보를 가져올 수 없습니다.", "error");
+                    // Swal.fire(
+                    //     "오류", "위치 정보를 가져올 수 없습니다.", "error");
                 }
             );
         } else {
-            Swal.fire("오류", "이 브라우저에서는 위치 정보를 사용할 수 없습니다.", "error");
+            // Swal.fire("오류", "이 브라우저에서는 위치 정보를 사용할 수 없습니다.", "error");
         }
     };
 
@@ -170,7 +170,6 @@ function Around() {
                                             size: iconSize,
                                         }} />
                                 )}
-
                                 {/* 샵 마커 */}
                                 {shopPositions.map((shop) => (
                                     <MapMarker key={`${shop.lat},${shop.lng}`}

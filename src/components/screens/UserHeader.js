@@ -14,11 +14,6 @@ function UserHeader() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const dispatch = useDispatch();
 
-  
-    
-            
-        
-
 
     const navigate = useNavigate();
 
@@ -83,7 +78,8 @@ function UserHeader() {
                     <Link to="/main"><img src="/img/logo/logo_color.png" alt="로고 이미지" className="header-logo" /></Link>
                 </div>
                 <div className="icon-container">
-                
+
+                    {/* <i className="fa-sharp fa-regular fa-circle" style={{color : "#ffa200"}}></i>                 */}
 
                     {user.roles !== 'ROLE_USER' &&
                         <Link to={`/des/${des.num}`} className="header-btn header-btn-text">디자이너</Link>

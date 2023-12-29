@@ -152,8 +152,8 @@ function UserJoin() {
                 '아이디를 입력해주세요',
             )
         } else {
-            const idRegExp = /^[a-zA-Z0-9]{4,12}$/;
-            if (!idRegExp.test(userinfo ? userinfo.id : id)) {
+            const idRegExp = /^[a-zA-Z0-9-]{4,30}$/;
+            if (!idRegExp.test(id)) {
                 SwalCustomAlert(
                     'notice',
                     '아이디는 영문 대소문자와 숫자 4~12자리로 입력해주세요.',
@@ -254,22 +254,30 @@ function UserJoin() {
 
 const checkEmail = (e) => {
     e.preventDefault();
-    if(email === ''){
+    console.log("userinfo.email : " + userinfo.email);
+    console.log("email : " + email);
+    if(email === '' && userinfo.email === ''){
         SwalCustomAlert(
             'notice',
             '이메일을 입력해주세요',
         )
         return false;
+    }else if(email === '' && userinfo.email !== ''){
+        setEmail(userinfo.email);
+    }
+    else{
+        setEmail(userinfo.email);
     }
     const emailRegExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/;
-    if (!emailRegExp.test(email)) {
+
+
+    if (!emailRegExp.test( email||userinfo.email )) {
         SwalCustomAlert(
             'notice',
             '이메일 형식을 확인해주세요',
         )
         return false;
     }
-
     setLoading(true);
     axios.get(`${url}/verify?email=${email}`)
         .then(res => {
@@ -345,20 +353,15 @@ const checkEmail = (e) => {
         const { value, name } = e.target;
         if (name === 'id') {
             setId(value);
-            console.log("Id : " + value);
-
+            console.log("Id : " + id);
         } else if (name === 'password') {
             setPassword(value);
-
         } else if (name === 'passwordCheck') {
             setPasswordCheck(value);
-
         } else if (name === 'username') {
             setUserName(value);
-
         } else if (name === 'nickname') {
             setNickname(value);
-
         } else if (name === 'tel') {
             setTel(value);
         }
@@ -418,8 +421,8 @@ const checkEmail = (e) => {
                                             <div className='input-for-label'>
                                                 <label htmlFor="id" className="label-text">아이디</label>
                                                 <div className="duplication-check">
-                                                    <input type="text" id="id" name="id" placeholder="영문 대소문자와 숫자 4~12자리" defaultValue={userinfo ? userinfo.id : ""}
-                                                        className="input-text" onChange={onChange} value={id} />
+                                                    <input type="text" id="id" name="id" placeholder="영문 대소문자와 숫자 4~12자리" 
+                                                        className="input-text" onChange={onChange}  value={id} />
                                                     <button className="duplication-btn small-btn" onClick={checkId} >중복확인</button>
                                                 </div>
                                             </div>
@@ -429,7 +432,8 @@ const checkEmail = (e) => {
                                                 <label htmlFor="nickname" className="label-text">닉네임</label>
                                                 <div className="duplication-check">
                                                     <input type="text" id="nickname" name="nickname" placeholder="한글 영문 대소문자와 숫자 4~12자리"
-                                                        className="input-text" onChange={onChange} value={nickname} defaultValue={userinfo ? userinfo.nickname : ""} />
+                                                        className="input-text" onChange={onChange}  defaultValue={userinfo ? userinfo.nickname : ""} 
+                                                        value={nickname}/>
                                                     <button className="duplication-btn small-btn"
                                                         onClick={checkNickname} >중복확인</button>
                                                 </div>
@@ -438,13 +442,13 @@ const checkEmail = (e) => {
                                             <div className='input-for-label'>
                                                 <label htmlFor="password" className="label-text">비밀번호</label>
                                                 <input type="password" id="password" name="password" placeholder="비밀번호 입력"
-                                                    className="input-text" onChange={(e) => { onChange(e); changePass(e); }} value={password} />
+                                                    className="input-text" value={password} onChange={(e) => { onChange(e); changePass(e); }}  />
                                             </div>
                                             {/** 비밀번호  체크*/}
                                             <div className='input-for-label'>
                                                 <label htmlFor="passwordCheck" className="label-text">비밀번호 확인</label>
                                                 <input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호를 한번더 입력해주세요."
-                                                    className="input-text" onChange={(e) => { onChange(e); changePassCheck(e); }} value={passwordCheck} />
+                                                    className="input-text" value={passwordCheck} onChange={(e) => { onChange(e); changePassCheck(e); }}  />
                                             </div>
                                             <span className="notice">{passMessage}</span>
 
@@ -465,7 +469,8 @@ const checkEmail = (e) => {
                                                 <label htmlFor="email" className="label-text">이메일</label>
                                                 <div className="duplication-check">
                                                     <input type='text' id='email' name='email' placeholder='이메일 입력 후 인증번호를 입력해주세요'
-                                                        className='input-text' onChange={onChange} value={email}  />
+                                                        className='input-text' onChange={onChange} defaultValue={userinfo.email ?userinfo.email : '' }
+                                                        value={email}  />
                                                     <button className="duplication-btn small-btn"
                                                         onClick={checkEmail} >이메일 인증</button>
                                                 </div>

@@ -92,14 +92,12 @@ function ShopRegForm() {
             }
 
             console.log("address_detail : " + shop.address_detail);
-
             formData.append("name", shop.name);
             formData.append("sId", sId);
             formData.append("address_road", shop.address_road);
             formData.append("address_detail", shop.address_detail);
             formData.append("latitude", latitude);
             formData.append("longitude", longitude);
-
             formData.append("userId", user.id);
 
 
@@ -257,7 +255,6 @@ function ShopRegForm() {
     };
 
     const callApi = async (value) => {
-        
         console.log("Call API!!!");
         console.log("Value : " + value);
         if (value === "" || value === null) {
@@ -267,19 +264,21 @@ function ShopRegForm() {
             );
             return;
         }
-        var data = {
+        
+        const data = {
             "b_no": [value + ""] // 사업자번호 "xxxxxxx" 로 조회 시,
         };
+
         try {
-            loading(true);
             const result = await $.ajax({
-                url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=43jTbFaB1Bw0bFtBXRHs2WW0Mk%2Bi71oEulvkm9CIAkn2wvwt88c1lJRBA8eYtIjHXXmVMWEEjI0ZPh%2BEMfCTUg%3D%3D",
+                url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=1s9RJe%2Bf9FVoqZ0gve8hYUSIZs9yny633YPnbtI6RvHl1jhtgDkkRfBkOYJ9ebhyikYSQqJhmitOMGgir8hwFg%3D%3D",
                 type: "POST",
                 data: JSON.stringify(data),
                 dataType: "JSON",
                 contentType: "application/json",
                 accept: "application/json",
             }).then((result) => {
+                console.log(result);
                 if (result.data[0].b_stt_cd === "01") {
                     SwalCustomAlert(
                         'success',
@@ -302,10 +301,7 @@ function ShopRegForm() {
                         '유효하지 않은 사업자 번호입니다.',
                     );
                 }
-            }).finally(() => {
-                loading(false);
-            }
-            );
+            })
 
         } catch (error) {
             console.error(error);

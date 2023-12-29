@@ -30,8 +30,9 @@ import ShopReg from './components/des_main_component/Des_My/ShopReg';
 import OauthJoin from './components/OauthJoin';
 import OauthExit from './components/OauthExit';
 
+
 // import DistanceCalculator from './components/tools/DistanceCalculator';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 // import { logoutStore } from './actions';
 
 
@@ -41,8 +42,12 @@ import OauthExit from './components/OauthExit';
 
 export const persistor = persistStore(store);
 
+
 function App() {
 
+  useEffect(() => {
+    document.title = '댕냥꽁냥';
+  }, []);
 
   return (
     <>
@@ -54,11 +59,13 @@ function App() {
 
       {/** User관련 라우터 */}
       <Route path='/main' element={<Main/>}/>
-      <Route path='/oauthjoin/:userinfo' element={<OauthJoin/>}/>
-      <Route path='/userjoin' element={<UserJoin/>}/>
+
       <Route path='/oauthexit/:exit' element={<OauthExit/>}/>
-      <Route path='/userlogin' element={<UserLogin/>}/>
+      <Route path='/oauthjoin/:userinfo' element={<OauthJoin/>}/>
       <Route path="/oauth/redirect/:token" element={<Oauth/>} />
+
+      <Route path='/userjoin' element={<UserJoin/>}/>
+      <Route path='/userlogin' element={<UserLogin/>}/>
       <Route path='/findid' element={<FindId/>}/>
       <Route path='/findpassword' element={<FindPassword/>}/>
       

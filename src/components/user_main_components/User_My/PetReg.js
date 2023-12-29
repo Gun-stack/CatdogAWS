@@ -47,6 +47,16 @@ function PetReg() {
         , []);
 
         const deletePet = (pet) => {
+            SwalCustomAlert.fire({
+                title: '반려동물 삭제',
+                text: '반려동물을 삭제하시겠습니까?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '삭제',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
             console.log(pet.num);
             axios.post(`${url}/petdelete?num=${pet.num}`, {
                 headers: {
@@ -55,19 +65,23 @@ function PetReg() {
             })
                 .then((res) => {
                     console.log(res.data);
+                    window.location.reload();
                 }
                 )
                 .catch((err) => {
                     console.log(err);
                 }
                 )
-        }
 
+
+        }
+    }
+        )
+    }
 
 
     return (
         <>
-
             <main className="cd-main dis-center">
                 <section className="shop-main-section bg-white">
                     <ul className="nav-ul">

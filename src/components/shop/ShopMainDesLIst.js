@@ -250,11 +250,12 @@ function ShopMainDesLIst() {
 
                     <div className="st-button-container">
 
-                        {shopInfo.sid === des.sid && user.roles === "ROLE_SHOP" && (
+                        {shopInfo.sid === des.sid && user.roles === "ROLE_SHOP" ? (
                             <button className="st-button" onClick={() => handleDeleteClick(des.num)}>
                                 삭제<i className="fas fa-pen btn-icon"></i>
                             </button>
-                        )}
+                        ):<></>
+                        }
 
                         {editableDesId === des.num ? (
                             <>
@@ -265,15 +266,13 @@ function ShopMainDesLIst() {
                                     취소<i className="fas fa-times btn-icon"></i>
                                 </button>
                             </>
-
                         ) : (
                             <>
-                                {shopInfo.sid === des.sid && user.roles === "ROLE_SHOP" && (
-
+                                {shopInfo.sid === des.sid && user.roles === "ROLE_SHOP" ? (
                                     <button className="st-button" onClick={() => handleEditClick(des.num)}>
                                         편집<i className="fas fa-pen btn-icon"></i>
                                     </button>
-                                )}
+                                ):<></>}
                             </>
                         )}
 

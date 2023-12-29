@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams,useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import {url} from'../../config';
+import PullToRefresh from 'react-pull-to-refresh';
 
 
 
 function DesGalSearch() {
+    const navigate = useNavigate();
     const [galleryList, setGalleryList] = useState([
     ]);
     const [page, setPage] = useState(0);
@@ -56,7 +58,17 @@ function DesGalSearch() {
     }
 }
 
-
+const handleRefresh = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // await window.location.reload();
+        await navigate('/gallery/des');
+        resolve(); // 새로고침이 성공적으로 완료되었을 때 호출
+      } catch (error) {
+        reject(error); // 에러가 발생하면 에러 객체를 전달하여 reject 호출
+      }
+    });
+  };
 
 
 
@@ -90,6 +102,9 @@ function DesGalSearch() {
 
     return (
         <section className="st-gallery-section">
+            <PullToRefresh onRefresh={handleRefresh} style={{ textAlign: 'center' }}>
+
+            
                 {/* 검색창 만들기 */}
             <div className="search-box">
                 <input type="text" onChange={onChangeSearch} className="input-text search-txt" defaultValue={search} placeholder="태그로 검색을 해보자" onKeyPress={searchHandler} />
@@ -122,6 +137,7 @@ function DesGalSearch() {
                 <div className="main-btn main-sm-btn" onClick={PlusPage}><span className="btn-text">더보기</span></div>
                 : <div className="main-btn main-sm-btn"><span className="btn-text">마지막 페이지 입니다.</span></div>
             }
+            </PullToRefresh>
         </section>
     );
 }

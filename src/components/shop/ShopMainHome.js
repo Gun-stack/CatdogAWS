@@ -69,7 +69,6 @@ function ShopMainHome() {
         try {
             let result;
             switch (btnValue) {
-
                 case 'titleimg':
                     result = await SwalCustomAlert(
                         'agree',
@@ -203,6 +202,39 @@ function ShopMainHome() {
 
                     break;
 
+                    case 'tel':
+                        result = await Swal.fire({
+                            title: '<span class="sweet-modal-title">매장전화번호</span>',
+                            input: 'text', // 일반 텍스트 입력
+                            html: '<span class="sweet-modal-title">매장전화번호를 입력하세요</span>',
+                            inputPlaceholder: '예: 02-123-4567',
+                            confirmButtonColor: '#F9950F',
+                            confirmButtonText: '등록',
+                            showCancelButton: true,
+                            cancelButtonText: '취소',
+                            reverseButtons: true,
+                        });
+                        if (result.isConfirmed && result.value) {
+                            setLoading(true);
+                            try {
+                                const formData = new FormData();
+                                formData.append('shopNum', shopInfo.num);
+                                formData.append('tel', result.value);   
+                                const res = await axios.post(`${url}/regshoptel`, formData);
+                                console.log(res);
+                            } catch (error) {
+                                console.error(error);
+                                <Server500Err_Alert />
+                            } finally {
+                                setLoading(false);
+                                window.location.reload();
+                            }
+                            console.log('입력한값:', result.value);
+                        }
+
+                        break;
+
+
                 default:
                     return;
             }
@@ -283,9 +315,12 @@ function ShopMainHome() {
                     <div className="shop-title-text sm-text">매장위치<i className="fas fa-map-pin btn-icon"></i></div>
                     <div className="shop-address">{shopInfo.addressRoad}</div>
                     <hr className="divide-line" />
+                    {shopInfo.id === user.id &&
+                            <button className='info-input-btn' value='tel' onClick={handleBtnClick}>매장전화번호 입력 <i className="far fa-plus-square tx-white"></i></button>
+                        }
                     <div className="shop-main-icons">
 
-                        <a href={shopInfo.tel}>
+                        <a href= {`tel:${shopInfo.tel}`}>
                             <div className="main-icon">
                                 <i className="fas fa-phone main-icon-style color-nomal"></i>
                                 <div>전화문의</div>

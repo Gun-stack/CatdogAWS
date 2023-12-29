@@ -164,7 +164,10 @@ function UserGalleryView() {
                             <div className="tag-container">
                                 {tags && tags.map((tag, index) => (
                                     <span key={index} onClick={() => tagClickHandler(tag)}>
+                                        {tag&&
                                         <span className="h-tag">#{tag} {' '}</span>
+                                        }
+
                                     </span>
                                 ))}
                             </div>

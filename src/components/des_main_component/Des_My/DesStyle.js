@@ -61,7 +61,7 @@ function DesStyle(props) {
             .catch((err) => {
                 console.log(err);
             })
-    }, [page]);
+    }, [page,des.num]);
     return (
         <div>
 

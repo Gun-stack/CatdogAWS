@@ -222,7 +222,7 @@ function Home() {
                     <hr className="divide-line" />
                     {/* <div className='dis-center'> */}
                     <Routes>
-                        <Route path="/" element={<DesHome desInfo={des} />} />
+                        <Route path="/" element={<DesStyle desInfo={des} />} />
                         <Route path="/home" element={<DesHome desInfo={des} />} />
                         <Route path="style" element={<DesStyle desInfo={des} />} />
                         <Route path="review" element={<DesReview desInfo={des} />} />
